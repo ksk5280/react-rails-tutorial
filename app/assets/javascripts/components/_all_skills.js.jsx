@@ -3,6 +3,10 @@ class AllSkills extends React.Component {
     super();
   }
 
+  handleDelete(id) {
+    this.props.handleDelete(id);
+  }
+
   render() {
     let skills = this.props.skills.map((skill) => {
       return (
@@ -10,6 +14,7 @@ class AllSkills extends React.Component {
           <h3>{skill.name}</h3>
           <p><strong>Level:</strong> {skill.level}</p>
           <p>{skill.details}</p>
+          <button onClick={this.handleDelete.bind(this, skill.id)}>Delete</button>
         </div>
       )
     });
