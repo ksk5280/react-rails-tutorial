@@ -1,4 +1,4 @@
-class Main extends React.Component {
+class Body extends React.Component {
   constructor() {
     super();
   }
@@ -6,8 +6,8 @@ class Main extends React.Component {
   render() {
     return (
       <div>
-        <Header />
-        <Body />
+        <AllSkills />
+        <NewSkill />
       </div>
     )
   }
