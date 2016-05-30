@@ -5,7 +5,7 @@ class Header extends React.Component {
 
   render() {
     return (
-      <h1>This is the Header!</h1>
+      <h1>List of Skills!</h1>
     )
   }
 }
