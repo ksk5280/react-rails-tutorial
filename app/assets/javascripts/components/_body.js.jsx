@@ -4,6 +4,7 @@ class Body extends React.Component {
     this.state = { skills: [] };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
+    this.handleUpdate = this.handleUpdate.bind(this);
   }
 
   componentDidMount() {
@@ -18,6 +19,24 @@ class Body extends React.Component {
         this.removeSkillfromDOM(id);
       }
     });
+  }
+
+  handleUpdate(skill) {
+    $.ajax({
+      url: `/api/v1/skills/${skill.id}`,
+      type: 'PUT',
+      data: { skill: skill },
+      success: () => {
+        this.updateSkills(skill);
+      }
+    });
+  }
+
+  updateSkills(skill) {
+    let skills = this.state.skills.filter((s) => { return s.id !== skill.id });
+    skills.push(skill);
+
+    this.setState({ skills: skills });
   }
 
   removeSkillfromDOM(id) {
@@ -37,7 +56,9 @@ class Body extends React.Component {
     return (
       <div>
         <NewSkill handleSubmit={this.handleSubmit} />
-        <AllSkills skills={this.state.skills} handleDelete={this.handleDelete} />
+        <AllSkills skills={this.state.skills}
+                   handleDelete={this.handleDelete}
+                   handleUpdate={this.handleUpdate}/>
       </div>
     )
   }
