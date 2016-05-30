@@ -1,4 +1,8 @@
-var Main = React.createClass({
+class Main extends React.Component {
+  constructor() {
+    super();
+  }
+
   render() {
     return (
       <div>
@@ -6,4 +10,4 @@ var Main = React.createClass({
       </div>
     )
   }
-})
+}
